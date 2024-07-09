@@ -17,8 +17,8 @@ router.post("/create-user",createUser);
 router.get("/get-users", getUsers);
 router.get("/get-entrenadores", getEntrenadores)
 router.put("/update-categoria", updateUserCategory)
-router.post("/auth/login", login)
-router.post("/auth/logout", logout)
+router.post("/auth-login", login)
+router.post("/auth-logout", logout)
 //categoriaRoutes
 router.post("/crear-categoria", createCategoria)
 

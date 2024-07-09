@@ -1,4 +1,5 @@
-import User from "../../models/user.js";
+import User from "../../models/User.js";
+
 
 // Obtener todos los usuarios
 const getUsers = async (req, res) => {
@@ -27,5 +28,6 @@ const getEntrenadores = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
 
 export { getUsers, getEntrenadores };

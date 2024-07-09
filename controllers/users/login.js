@@ -4,7 +4,9 @@ import User from "../../models/User.js"
 
 const signin = async (req, res, next) => {
     try {
-    const { email, password } = req.body;
+    const data = req.body;
+    const email = data.email
+    const password = data.password
 
     const user = await User.findOne({where: { email }});
 
