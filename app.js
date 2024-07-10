@@ -32,7 +32,7 @@ app.use(cors());
 app.use('/api', indexRouter);
 
 // Sincronizar la base de datos
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync().then(() => {
   console.log("Database & tables created!");
 }).catch((error) => {
   console.error("Unable to connect to the database:", error);

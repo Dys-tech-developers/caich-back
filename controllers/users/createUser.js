@@ -2,21 +2,22 @@ import User from "../../models/User.js";
 import bcryptjs from "bcryptjs";
 
 const createUser = async(req,res) =>{
-    const {username, email, password, nombre, role} = req.body
+    const data = req.body
+    console.log("llega del front",data.password)
 
-    if (!email || !password) {
+    if (!data.email || !data.password) {
         return res.status(400).json({ message: 'Correo electrónico y contraseña son obligatorios' });
     }
 
     try {
-        const hashedPassword = bcryptjs.hashSync(password, 10);
+        const hashedPassword = bcryptjs.hashSync(data.password, 10);
 
         const user = new User({
-            username,
-            email,
-            password: hashedPassword,
-            nombre,
-            role
+            username : data.username,
+            email : data.email,
+            password:  hashedPassword,
+            nombre: data.nombre,
+            role: data.role
         })
 
         await user.save()
