@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';
+import sequelize from '../config/config.js';
 
 const Scouting = sequelize.define('Scouting', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -13,7 +13,14 @@ const Scouting = sequelize.define('Scouting', {
     localidad: { type: DataTypes.STRING, allowNull: false },
     experiencia_afa: { type: DataTypes.STRING, allowNull: false },
     observaciones: { type: DataTypes.STRING, allowNull: true },
-    caracteristicas: { type: DataTypes.STRING, allowNull: true }
+    caracteristicas: { type: DataTypes.STRING, allowNull: true },
+    estado: { 
+        type: DataTypes.ENUM, 
+        values: ['activo', 'en proceso', 'aprobado', 'descartado', 'inactivo', 'pendiente de confirmación'],
+        allowNull: false, 
+        defaultValue: 'activo' 
+    },
+    eliminado: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false }
 }, {
     timestamps: false,
     tableName: 'scouting'

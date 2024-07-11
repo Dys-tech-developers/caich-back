@@ -29,6 +29,12 @@ const getJugadores = async (req,res) => {
         if (categoria) {
             where.categoria_id = categoria;
         }
+
+        // filtrar por estado
+        if (estado) {
+            where.estado = estado
+        }
+        
         //joacodimaro97@gmail.com agrega nombre de categoria de c/jugador
         const jugadores = await Jugador.findAll({
             where,

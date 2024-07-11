@@ -32,7 +32,10 @@ app.use(cors());
 app.use('/api', indexRouter);
 
 // Sincronizar la base de datos
-sequelize.sync().then(() => {
+
+// { alter: true } para modificar la tabla   SACAR CUANDO SUBAMOS A PRODUCCION 
+
+sequelize.sync().then(() => {  // { alter: true }
   console.log("Database & tables created!");
 }).catch((error) => {
   console.error("Unable to connect to the database:", error);
