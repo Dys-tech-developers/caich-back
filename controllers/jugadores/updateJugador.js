@@ -2,7 +2,7 @@ import Jugador from "../../models/Jugador.js";
 
 const updateJugador = async (req, res) => {
     const { id } = req.params;
-    const { telefono, tutor_telefono, categoria_id, numero_socio, qr, imagen } = req.body;
+    const { telefono, tutor_telefono, categoria_id, numero_socio, qr, imagen, estado } = req.body;
     
     try {
         // Buscar el jugador por su ID
@@ -19,6 +19,7 @@ const updateJugador = async (req, res) => {
         jugador.numero_socio = numero_socio || jugador.numero_socio;
         jugador.qr = qr || jugador.qr;
         jugador.imagen = imagen || jugador.imagen;
+        jugador.estado = estado || jugador.estado;
 
         // Guardar los cambios
         await jugador.save();
