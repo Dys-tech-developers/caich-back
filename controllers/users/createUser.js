@@ -3,7 +3,7 @@ import bcryptjs from "bcryptjs";
 
 const createUser = async(req,res) =>{
     const data = req.body
-    console.log("llega del front",data.password)
+    
 
     if (!data.email || !data.password) {
         return res.status(400).json({ message: 'Correo electrónico y contraseña son obligatorios' });
