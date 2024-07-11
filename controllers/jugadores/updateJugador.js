@@ -2,8 +2,13 @@ import Jugador from "../../models/Jugador.js";
 
 const updateJugador = async (req, res) => {
     const { id } = req.params;
-    const { telefono, tutor_telefono, categoria_id, numero_socio, qr, imagen } = req.body;
-    
+    const { telefono, tutor_telefono, categoria_id, numero_socio, qr, imagen, estado } = req.body;
+
+    const validEstados = ['activo', 'inactivo', 'lesionado', 'cedido', 'suspendido'];
+
+    if (estado && !validEstados.includes(estado)) {
+        return res.status(400).json({ error: 'Estado no válido' });
+    }
     try {
         // Buscar el jugador por su ID
         const jugador = await Jugador.findByPk(id);
@@ -19,6 +24,7 @@ const updateJugador = async (req, res) => {
         jugador.numero_socio = numero_socio || jugador.numero_socio;
         jugador.qr = qr || jugador.qr;
         jugador.imagen = imagen || jugador.imagen;
+        jugador.estado = estado || jugador.estado;
 
         // Guardar los cambios
         await jugador.save();

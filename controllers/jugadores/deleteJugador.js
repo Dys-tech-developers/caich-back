@@ -6,19 +6,19 @@ const deleteJugador = async(req, res) => {
     try {
         const jugador = await Jugador.findByPk(id)
         if (!jugador) {
-            return res.status(404).json({ message: 'Usuario no encontrado' });
+            return res.status(404).json({ message: 'Jugador no encontrado' });
         }
 
-        jugador.estado = 'eliminado'
+        jugador.eliminado = true;
 
-        await jugador.save()
+        await jugador.save();
 
         res.status(200).json({ message: 'Jugador eliminado correctamente' });
 
     } catch (error) {
-        console.error(`Error deleting user with ID ${id}:`, error);
+        console.error(`Error al eliminar el jugador con id ${id}:`, error);
         res.status(500).json({ error: 'Internal server error' });
-    }
+    }   
 }
 
 export default deleteJugador

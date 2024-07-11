@@ -17,9 +17,11 @@ const Jugador = sequelize.define('Jugador', {
     qr: { type: DataTypes.BLOB, allowNull: true },
     imagen: { type: DataTypes.BLOB, allowNull: true },
     estado: { 
-        type: DataTypes.ENUM('activo', 'inactivo', 'pendiente', 'eliminado'), 
-        allowNull: false 
-    }
+        type: DataTypes.ENUM('activo', 'inactivo', 'lesionado', 'cedido', 'suspendido'), 
+        allowNull: false,
+        defaultValue: 'activo'
+    },
+    eliminado: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false }
 }, {
     timestamps: false,
     tableName: 'jugadores'

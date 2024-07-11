@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan'
 import indexRouter from "./routes/index.js"
 import dotenv from 'dotenv'
-//import { connectToDatabase } from './config/database.js';
 import sequelize from './config/config.js';
 
 const app = express();
@@ -32,23 +31,11 @@ app.use('/api', indexRouter);
 
 // { alter: true } para modificar la tabla   SACAR CUANDO SUBAMOS A PRODUCCION 
 
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync().then(() => {  // { alter: true }
   console.log("Database & tables created!");
 }).catch((error) => {
   console.error("Unable to connect to the database:", error);
 });
-
-// Conexión a la base de datos y luego iniciar el servidor
-// connectToDatabase()
-//   .then((dbConnection) => {
-//     console.log('Conexión a la base de datos exitosa');
-//     app.listen(port, () => {
-//       console.log(`Servidor en ejecución en http://localhost:${port}`);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error('La aplicación no pudo iniciar debido a un error en la conexión a la base de datos:', err);
-//   });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -67,4 +54,3 @@ app.use(function(err, req, res, next) {
 });
 
 export default app
-

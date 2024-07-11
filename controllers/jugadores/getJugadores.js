@@ -3,9 +3,9 @@ import { Op } from "sequelize";
 
 const getJugadores = async (req,res) => {
     try {
-        const { nombre, categoria } = req.query; // mejor req.body ?? 
+        const { nombre, categoria, estado } = req.query; // mejor req.body ?? 
 
-        let where = {estado:'activo'}
+        let where = {eliminado: false}
 
         // Agregar filtro de nombre si se proporciona
         if (nombre) {
@@ -18,6 +18,12 @@ const getJugadores = async (req,res) => {
         if (categoria) {
             where.categoria_id = categoria;
         }
+
+        // filtrar por estado
+        if (estado) {
+            where.estado = estado
+        }
+        
         const jugadores = await Jugador.findAll({where})
 
         res.status(200).json({jugadores})
