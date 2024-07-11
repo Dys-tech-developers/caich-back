@@ -1,12 +1,13 @@
 import createError from 'http-errors';
-import express from 'express'
+import express from 'express';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
-import logger from 'morgan'
-import indexRouter from "./routes/index.js"
-import dotenv from 'dotenv'
+import logger from 'morgan';
+import indexRouter from "./routes/index.js";
+import dotenv from 'dotenv';
+import cors from 'cors'; // Importa el middleware CORS
 import sequelize from './config/config.js';
 
 const app = express();
@@ -24,6 +25,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Middleware CORS para permitir todas las solicitudes
+app.use(cors());
 
 app.use('/api', indexRouter);
 
@@ -53,4 +57,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-export default app
+export default app;
