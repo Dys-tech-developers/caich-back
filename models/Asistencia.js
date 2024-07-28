@@ -1,23 +1,24 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';
+import sequelize from '../config/config.js';
 import Jugador from './Jugador.js';
-import Entrenamiento from './entrenamiento.js';
+import Entrenamiento from './Entrenamiento.js';
 
 const Asistencia = sequelize.define('Asistencia', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     dni_jugador: { 
         type: DataTypes.STRING, 
-        references: { model: 'Jugador', key: 'dni' },
+        references: { model: Jugador, key: 'dni' },
         allowNull: false 
     },
     entrenamiento_id: { 
         type: DataTypes.INTEGER, 
-        references: { model: 'Entrenamiento', key: 'id' },
+        references: { model: Entrenamiento, key: 'id' },
         allowNull: false 
     },
     fecha: { type: DataTypes.DATE, allowNull: false }
 }, {
     timestamps: false,
-    tableName: 'asistencias'
+    tableName: 'dev_asistencias'
 });
 
 Jugador.hasMany(Asistencia, { foreignKey: 'dni_jugador' });

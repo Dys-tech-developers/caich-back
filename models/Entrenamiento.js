@@ -1,18 +1,20 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';
+import sequelize from '../config/config.js';
 import Categoria from './Categoria.js';
 
 const Entrenamiento = sequelize.define('Entrenamiento', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    fecha_hora: { type: DataTypes.DATE, allowNull: false },
+    dias_semana: {type: DataTypes.STRING, allowNull:false},
+    hora: {type: DataTypes.TIME, allowNull:false},
+    //fecha_hora: { type: DataTypes.DATE, allowNull: false },
     categoria_id: { 
         type: DataTypes.INTEGER, 
-        references: { model: 'Categoria', key: 'id' },
+        references: { model: Categoria, key: 'id' },
         allowNull: false 
     }
 }, {
     timestamps: false,
-    tableName: 'entrenamientos'
+    tableName: 'dev_entrenamientos'
 });
 
 Categoria.hasMany(Entrenamiento, { foreignKey: 'categoria_id' });

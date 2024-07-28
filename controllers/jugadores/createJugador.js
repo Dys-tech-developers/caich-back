@@ -2,8 +2,7 @@ import Jugador from "../../models/Jugador.js";
 
 const createJugador = async(req, res) => {
     const data = req.body; 
-    console.log(data.tutor_telefono)
-   console.log(req.body)
+
     try {
         const jugador = new Jugador({
             nombre : data.nombre,
@@ -18,6 +17,7 @@ const createJugador = async(req, res) => {
             estado: data.estado
         });
         await jugador.save()
+        
         res.status(201).json({jugador})
     } catch (error) {
         console.error('Error creating jugador:', error);
