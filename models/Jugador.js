@@ -24,7 +24,7 @@ const Jugador = sequelize.define('Jugador', {
     eliminado: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false }
 }, {
     timestamps: false,
-    tableName: 'jugadores'
+    tableName: 'dev_jugadores'
 });
 
 Categoria.hasMany(Jugador, { foreignKey: 'categoria_id' });
