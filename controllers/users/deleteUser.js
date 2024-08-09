@@ -1,4 +1,4 @@
-import User from "../../models/user.js";
+import User from "../../models/User.js";
 
 // Cambiar estado de usuario a "eliminado" por ID
 const deleteUser = async (req, res) => {

@@ -26,7 +26,7 @@ const signin = async (req, res, next) => {
 
     await User.update({ isOnline: true }, { where: { email: user.email } });
 
-    const token = jwt.sign({ id: user.id }, process.env.SECRET, {
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
     expiresIn: 60 * 60 * 24,
     });
 

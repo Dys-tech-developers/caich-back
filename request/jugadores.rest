@@ -1,0 +1,21 @@
+
+### LOGIN
+POST http://localhost:3000/api/auth-login
+Content-Type: application/json
+
+{
+    "email": "fran@admin.com",
+    "password": "hola1234"
+}
+
+### CREATE USER
+POST http://localhost:3000/api/create-user
+Content-Type: application/json
+
+{
+    "username" : "franadmin",
+    "email" : "fran@admin.com",
+    "password":  "hola1234",
+    "nombre": "fran administrador",
+    "role": 3
+}

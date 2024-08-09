@@ -1,5 +1,5 @@
 import Jugador from "../../models/Jugador.js";
-
+import QRCode from "qrcode";
 const createJugador = async(req, res) => {
     const data = req.body; 
 
@@ -12,11 +12,35 @@ const createJugador = async(req, res) => {
             tutor_telefono: data.tutor_telefono,
             categoria_id: data.categoria_id,
             numero_socio: data.numero_socio,
-            qr: data.qr,
             imagen: data.imagen,
             estado: data.estado
         });
         await jugador.save()
+
+        // Convertir los datos del jugador en un JSON string
+        // const qrCodeData = JSON.stringify({
+        //     id: jugador.id,
+        //     nombre: jugador.nombre,
+        //     dni: jugador.dni,
+        //     telefono: jugador.telefono,
+        //     fecha_nacimiento: jugador.fecha_nacimiento,
+        //     tutor_telefono: jugador.tutor_telefono,
+        //     categoria_id: jugador.categoria_id,
+        //     numero_socio: jugador.numero_socio,
+        //     estado: jugador.estado
+        // });
+
+        // CAMBIAR LOCAL HOST POR DOMINIO NUESTRO
+        const qrCodeData = `http://localhost:3000/api/get-jugador-qr/${jugador.id}`;
+
+        // Generar el QR Code con los datos del jugador
+        const qr = await QRCode.toDataURL(qrCodeData); // Genera el QR como Data URL
+
+
+        // Guardar el QR Code en la base de datos
+        jugador.qr = qr;
+        await jugador.save();
+       
         
         res.status(201).json({jugador})
     } catch (error) {
