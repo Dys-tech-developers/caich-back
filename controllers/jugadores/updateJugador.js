@@ -2,8 +2,8 @@ import Jugador from "../../models/Jugador.js";
 
 const updateJugador = async (req, res) => {
     const { id } = req.params;
-    const { telefono, tutor_telefono, categoria_id, numero_socio, qr, imagen, estado } = req.body;
-    
+    const { telefono, tutor_telefono, categoria_id, numero_socio, qr, imagen, estado, nombre, fecha_nacimiento } = req.body;
+    console.log("body", req.body)
     try {
         // Buscar el jugador por su ID
         const jugador = await Jugador.findByPk(id);
@@ -13,6 +13,8 @@ const updateJugador = async (req, res) => {
         }
 
         // Actualizar los campos permitidos
+        
+        jugador.nombre = nombre || jugador.nombre;
         jugador.telefono = telefono || jugador.telefono;
         jugador.tutor_telefono = tutor_telefono || jugador.tutor_telefono;
         jugador.categoria_id = categoria_id || jugador.categoria_id;
@@ -20,7 +22,7 @@ const updateJugador = async (req, res) => {
         jugador.qr = qr || jugador.qr;
         jugador.imagen = imagen || jugador.imagen;
         jugador.estado = estado || jugador.estado;
-
+        jugador.fecha_nacimiento = fecha_nacimiento || jugador.fecha_nacimiento
         // Guardar los cambios
         await jugador.save();
 
