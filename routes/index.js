@@ -6,6 +6,8 @@ import scoutingRouter from './scouting/scoutingRoutes.js'
 import entrenamientoRouter from './entrenamientos/entrenamientoRoutes.js'
 import asistenciaRouter from "./asistencias/asistenciasRoutes.js"
 import pagoJugadorRouter from "./pagojugador/pagoJugadorRoutes.js"
+import partidoRouter from "./partidos/partidoRoutes.js"
+import convocatoriaRouter from "./convocatoriaPartido/convocatoriaPartidoRoutes.js"
 
 const router = express.Router();
 
@@ -21,5 +23,7 @@ router.use("/", scoutingRouter)
 router.use("/", entrenamientoRouter)
 router.use("/", asistenciaRouter)
 router.use("/", pagoJugadorRouter)
+router.use("/", partidoRouter)
+router.use("/", convocatoriaRouter)
 
 export default router;
