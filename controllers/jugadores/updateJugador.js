@@ -3,7 +3,6 @@ import Jugador from "../../models/Jugador.js";
 const updateJugador = async (req, res) => {
     const { id } = req.params;
     const { telefono, tutor_telefono, categoria_id, numero_socio, qr, imagen, estado, nombre, fecha_nacimiento } = req.body;
-    console.log("body", req.body)
     try {
         // Buscar el jugador por su ID
         const jugador = await Jugador.findByPk(id);
