@@ -3,7 +3,7 @@ import Entrenamiento from "../../models/Entrenamiento.js";
 const createEntrenamiento = async (req, res) => {
     
     const { dias_semana, hora, categoria_id } = req.body;
-
+console.log(req.body)
     try {
         // Crear el entrenamiento en la base de datos
         const nuevoEntrenamiento = await Entrenamiento.create({

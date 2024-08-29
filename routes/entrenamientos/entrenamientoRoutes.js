@@ -10,7 +10,7 @@ let router = Router()
 router.post("/create-entrenamiento", createEntrenamiento)
 router.put("/update-entrenamiento/:id", updateEntrenamiento)
 router.get("/get-entrenamientos", getEntrenamientos)
-router.delete("/delete-entrenamiento/:id", deleteEntrenamiento)
+router.post("/delete-entrenamiento", deleteEntrenamiento)
 
 
 export default router

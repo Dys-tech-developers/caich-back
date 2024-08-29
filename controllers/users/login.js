@@ -9,7 +9,7 @@ const signin = async (req, res, next) => {
     const password = data.password
 
     const user = await User.findOne({where: { email }});
-
+    
     if (!user) {
     return res.status(404).json({
         message: "Email incorrecto",
