@@ -11,7 +11,7 @@ const Jugador = sequelize.define('Jugador', {
     tutor_telefono: { type: DataTypes.STRING, allowNull: false },
     categoria_id: { 
         type: DataTypes.INTEGER, 
-        references: { model: 'categorias', key: 'id' }
+        references: { model: Categoria, key: 'id' }
     },
     numero_socio: { type: DataTypes.STRING, allowNull: false },
     qr: { type: DataTypes.BLOB, allowNull: true },

@@ -1,20 +1,33 @@
 import Jugador from "../../models/Jugador.js";
 import QRCode from "qrcode";
 const createJugador = async(req, res) => {
-    const data = req.body; 
-
+    //const data = req.body; 
+    const jugadoresData = req.body; // Supone que req.body es un array de objetos
     try {
-        const jugador = new Jugador({
-            nombre : data.nombre,
-            dni: data.dni,
-            telefono: data.telefono,
-            fecha_nacimiento: data.fecha_nacimiento,
-            tutor_telefono: data.tutor_telefono,
-            categoria_id: data.categoria_id,
-            numero_socio: data.numero_socio,
-            imagen: data.imagen,
-            estado: data.estado
-        });
+        // const jugador = new Jugador({
+        //     nombre : data.nombre,
+        //     dni: data.dni,
+        //     telefono: data.telefono,
+        //     fecha_nacimiento: data.fecha_nacimiento,
+        //     tutor_telefono: data.tutor_telefono,
+        //     categoria_id: data.categoria_id,
+        //     numero_socio: data.numero_socio,
+        //     imagen: data.imagen,
+        //     estado: data.estado
+        // });
+
+        const nuevosJugadores = await Promise.all(jugadoresData.map(async (data) => {
+            const jugador = new Jugador({
+                nombre : data.nombre,
+                dni: data.dni,
+                telefono: data.telefono,
+                fecha_nacimiento: data.fecha_nacimiento,
+                tutor_telefono: data.tutor_telefono,
+                categoria_id: data.categoria_id, 
+                numero_socio: data.numero_socio, // Puedes aplicar la lógica de incremento aquí si es necesario
+                imagen: data.imagen,
+                estado: data.estado
+            });
         await jugador.save()
 
         // Convertir los datos del jugador en un JSON string
@@ -41,8 +54,9 @@ const createJugador = async(req, res) => {
         jugador.qr = qr;
         await jugador.save();
        
-        
-        res.status(201).json({jugador})
+        return jugador;
+    }));
+        res.status(201).json({jugadores:nuevosJugadores})
     } catch (error) {
         console.error('Error creating jugador:', error);
         res.status(500).status({error: 'internal server error'})

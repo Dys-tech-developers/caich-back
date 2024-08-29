@@ -13,10 +13,11 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT,  // Puerto de la base de datos
     logging: console.log,
     dialectOptions: {
-      ssl: {
-        require: true, // Opcional, según el proveedor de la base de datos
-        rejectUnauthorized: false // Configura según tu necesidad de seguridad
-      }
+      // ssl: {
+      //   require: true, // Opcional, según el proveedor de la base de datos
+      //   rejectUnauthorized: false // Configura según tu necesidad de seguridad
+      // }
+      ssl: false // Deshabilita SSL
     }
   }
 );
