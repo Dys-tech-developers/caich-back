@@ -1,0 +1,17 @@
+# crear asosiacion categoria entrenador. 
+POST http://localhost:3000/api/categoria-entrenador
+Content-Type: application/json
+
+{
+    "entrenador_id" :13 ,
+    "categoria_id" : 11
+}
+
+### eliminar asosiacion categoria entrenador 
+DELETE  http://localhost:3000/api/eliminar-categoria-entrenador
+Content-Type: application/json
+
+{
+    "entrenador_id" :13 ,
+    "categoria_id" : 11
+}

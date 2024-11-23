@@ -2,6 +2,13 @@
 
 
 ### Read Jugadores
+GET  http://localhost:3000/api/get-jugadores
+Content-Type: application/json
+
+{
+    "entrenador_id" :13 ,
+    "categoria_id" : 11
+}
 
 
 ### Delete jugadores
