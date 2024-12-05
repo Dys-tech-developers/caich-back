@@ -13,12 +13,17 @@ const registrarAsistencias = async (req, res) => {
 
         //const fecha = new Date()
         // Registrar la asistencia para cada jugador seleccionado
-        const asistencias = await Promise.all(jugadores.map(async dni_jugador => {
-            return await Asistencia.create({
-                dni_jugador,
-                entrenamiento_id,
-                fecha: fecha
-            });
+        const asistencias = await Promise.all(
+            jugadores.map(async jugador => {
+                const {dni, estado} = jugador
+                
+                // Crear el registro de asistencia
+                return await Asistencia.create({
+                    dni_jugador: dni,
+                    entrenamiento_id,
+                    estado,
+                    fecha
+                });
         }));
 
         res.status(201).json({ asistencias });

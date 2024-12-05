@@ -110,7 +110,7 @@ const getJugadores = async (req, res) => {
       estado: jugador.estado
     }));
     
-    res.status(200).json({ cleanedJugadores });
+    res.status(200).json({ jugadores:cleanedJugadores });
   } catch (error) {
     console.error('Error al obtener jugadores:', error);
     res.status(500).json({ error: 'Error interno en el servidor' });
