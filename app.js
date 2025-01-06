@@ -29,12 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware CORS para permitir todas las solicitudes
 app.use(cors());
 
-app.use('/api', indexRouter);
+app.use('/debug', indexRouter);
 
 // Sincronizar la base de datos
-
-// { alter: true } para modificar la tabla   SACAR CUANDO SUBAMOS A PRODUCCION 
-
 sequelize.sync().then(() => {  // { alter: true }
   console.log("Database & tables created!");
 }).catch((error) => {

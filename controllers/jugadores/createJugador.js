@@ -58,8 +58,8 @@ const createJugador = async(req, res) => {
     }));
         res.status(201).json({jugadores:nuevosJugadores})
     } catch (error) {
-        console.error('Error creating jugador:', error);
-        res.status(500).status({error: 'internal server error'})
+        console.error('Error creando jugador:', error);
+        res.status(500).status({error: 'Error interno del servidor'})
     }
 }
 

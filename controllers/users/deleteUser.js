@@ -15,8 +15,8 @@ const deleteUser = async (req, res) => {
 
         res.status(200).json({ message: 'Usuario eliminado correctamente' });
     } catch (error) {
-        console.error(`Error deleting user with ID ${id}:`, error);
-        res.status(500).json({ error: 'Internal server error' });
+        console.error(`Error al eliminar el usuario con ID ${id}:`, error);
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
 };
 

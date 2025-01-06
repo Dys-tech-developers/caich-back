@@ -17,7 +17,7 @@ const deleteJugador = async(req, res) => {
 
     } catch (error) {
         console.error(`Error al eliminar el jugador con id ${id}:`, error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Error interno del servidor' });
     }   
 }
 

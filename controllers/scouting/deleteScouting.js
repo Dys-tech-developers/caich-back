@@ -17,7 +17,7 @@ const deleteScouting = async (req, res) => {
         res.status(200).json({ scouting });
     } catch (error) {
         console.error('Error al eliminar el scouting:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
 };
 

@@ -29,8 +29,8 @@ const updateJugador = async (req, res) => {
         // Responder con el jugador actualizado
         res.status(200).json({ jugador });
     } catch (error) {
-        console.error('Error updating jugador:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        console.error('Error updateando jugador:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
 }
 

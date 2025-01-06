@@ -20,8 +20,8 @@ const createScouting = async (req, res) => {
         });
         res.status(201).json({ scouting });
     } catch (error) {
-        console.error('Error creating scouting:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        console.error('Error creando scouting:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
 };
 

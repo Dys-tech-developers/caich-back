@@ -25,7 +25,7 @@ const obtenerAsistencias = async (req, res) => {
             include:[
                 {
                     model: Jugador,
-                    attributes: ['nombre'] // Incluir solo los datos necesarios del jugador
+                    attributes: ['nombre', 'dni'] // Incluir solo los datos necesarios del jugador
                 }
             ]
         });
@@ -34,7 +34,8 @@ const obtenerAsistencias = async (req, res) => {
             id: asistencia.id,
             fecha: asistencia.fecha,
             estado: asistencia.estado,
-            jugador: asistencia.Jugador.nombre // Acceder al nombre del jugador relacionado
+            jugador: asistencia.Jugador.nombre, // Acceder al nombre del jugador relacionado
+            dni: asistencia.Jugador.dni // Acceder al dni del jugador relacionado
         }));
 
         res.status(200).json({ asistencias: asistenciasFormateadas });

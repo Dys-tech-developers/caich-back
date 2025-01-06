@@ -22,7 +22,7 @@ const updateUserCategory = async (req, res) => {
         res.status(200).json({ message: 'Categoría actualizada correctamente' });
     } catch (error) {
         console.error(`Error updating category name with user ID ${userId}:`, error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
 };
 
